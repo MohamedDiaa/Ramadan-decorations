@@ -1,7 +1,4 @@
-// const P0 = { x: 20, y: 20 };
-// const P1 = { x: 380, y: 400 };
-// const P2 = { x: 780, y: 20 };
-
+// ----- define bezier function
 function getBezierPoint(t, P0, P1, P2) {
   const x = (1 - t) ** 2 * P0.x + 2 * (1 - t) * t * P1.x + t ** 2 * P2.x;
   const y = (1 - t) ** 2 * P0.y + 2 * (1 - t) * t * P1.y + t ** 2 * P2.y;
@@ -11,18 +8,39 @@ function getBezierPoint(t, P0, P1, P2) {
 // -------- Dom code -----------
 
 const canvas = document.getElementById("myCanvas");
+let timer = null;
+
+if(canvas === null) {
+
+ let myCanvas = document.createElement('canvas');
+  myCanvas.id = "myCanvas"
+  myCanvas.style.position = "absolute";
+  myCanvas.style.backgroundColor = "rgba(0,0,0,0.0)";
+  myCanvas.style.display = "block";
+
+  const body = document.getElementsByTagName("body")[0];
+  body.appendChild(myCanvas)  ;
+  
+}
+
 resizeCanvas();
 
 // resize the canvas to fill browser window dynamically
 window.addEventListener("resize", resizeCanvas, false);
 
 function resizeCanvas() {
+  const canvas = document.getElementById("myCanvas");
+
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   drawStuff();
 }
 
+
 function drawStuff() {
+
+  const canvas = document.getElementById("myCanvas");
+
   // do your drawing stuff here
   const width = window.innerWidth;
   const height = window.innerHeight;
@@ -60,19 +78,10 @@ function drawStuff() {
     ctx.fill();
   });
 
-  //const div = document.getElementById("lamps");
+clearTimeout(timer);
 
-  //let items = points.map(pt => `<h1 style="position: absolute;color: red;left: ${pt.x}px;top: ${pt.y}px">X</h1>`);
-  // let items = points.map(pt =>
-  //   `<img src="assets/noun-fanoos-7130645.png" alt="" width="60px" height="60px" style="position: absolute; left: ${pt.x}px;top: ${pt.y}px">`
-  // )
-  //div.innerHTML = items;
-
-  setTimeout(() => {
-    drawStuff()
-    console.log("timeout")
-  }, 200);
+  timer = setTimeout(() => {
+    drawStuff();
+    console.log("timeout");
+  }, 300);
 }
-
-
-
