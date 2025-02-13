@@ -17,7 +17,7 @@ if(canvas === null) {
   myCanvas.style.position = "absolute";
   myCanvas.style.backgroundColor = "rgba(0,0,0,0.0)";
   myCanvas.style.display = "block";
-
+  myCanvas.style.top = "0";
   const body = document.getElementsByTagName("body")[0];
   body.appendChild(myCanvas)  ;
   
