@@ -46,6 +46,10 @@ function drawStuff() {
 
   const div = document.getElementById("lamps");
    
-  let items = points.map(pt => `<h1 style="position: absolute;color: red;left: ${pt.x}px;top: ${pt.y}px">X</h1>`);
+  //let items = points.map(pt => `<h1 style="position: absolute;color: red;left: ${pt.x}px;top: ${pt.y}px">X</h1>`);
+  let items = points.map(pt => 
+    `<img src="assets/noun-fanoos-7130645.png" alt="" width="60px" height="60px" style="position: absolute; left: ${pt.x}px;top: ${pt.y}px">`
+  )
+  
   div.innerHTML = items;
 }
