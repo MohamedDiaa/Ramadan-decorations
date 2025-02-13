@@ -44,12 +44,35 @@ function drawStuff() {
     points.push(getBezierPoint(t, p0, p1, p2));
   }
 
-  const div = document.getElementById("lamps");
-   
+  var colors = ["#ff0000", "#00ff00", "#0000ff"];
+
+  points.forEach((pt) => {
+    var random_color = colors[Math.floor(Math.random() * colors.length)];
+
+    ctx.beginPath();
+    ctx.moveTo(pt.x, pt.y);
+    ctx.lineTo(pt.x + 40, pt.y + 60);
+    ctx.lineTo(pt.x - 40, pt.y + 60);
+    ctx.lineTo(pt.x, pt.y);
+
+    ctx.fillStyle = random_color;
+
+    ctx.fill();
+  });
+
+  //const div = document.getElementById("lamps");
+
   //let items = points.map(pt => `<h1 style="position: absolute;color: red;left: ${pt.x}px;top: ${pt.y}px">X</h1>`);
-  let items = points.map(pt => 
-    `<img src="assets/noun-fanoos-7130645.png" alt="" width="60px" height="60px" style="position: absolute; left: ${pt.x}px;top: ${pt.y}px">`
-  )
-  
-  div.innerHTML = items;
+  // let items = points.map(pt =>
+  //   `<img src="assets/noun-fanoos-7130645.png" alt="" width="60px" height="60px" style="position: absolute; left: ${pt.x}px;top: ${pt.y}px">`
+  // )
+  //div.innerHTML = items;
+
+  setTimeout(() => {
+    drawStuff()
+    console.log("timeout")
+  }, 200);
 }
+
+
+
